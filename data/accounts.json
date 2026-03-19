@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "company": "Northstar Field Services",
+    "industry": "Facilities services",
+    "us_employees": 4800,
+    "contact_name": "Alicia Gomez",
+    "contact_title": "VP, Revenue Operations",
+    "crm_platform": "Salesforce",
+    "notes": "Multi-region field team with branch-level quoting and an expanding enterprise sales motion"
+  },
+  {
+    "id": 2,
+    "company": "BluePeak Software",
+    "industry": "B2B SaaS",
+    "us_employees": 950,
+    "contact_name": "Marcus Lin",
+    "contact_title": "Director of Growth Operations",
+    "crm_platform": "HubSpot",
+    "notes": "PLG plus outbound motion. Recently hired new SDR managers and is building account-based workflows"
+  },
+  {
+    "id": 3,
+    "company": "Harbor Industrial Group",
+    "industry": "Industrial distribution",
+    "us_employees": 7200,
+    "contact_name": null,
+    "contact_title": null,
+    "crm_platform": "Unknown",
+    "notes": "Acquisition-driven growth across multiple regions with uneven CRM usage and no named GTM operator identified"
+  },
+  {
+    "id": 4,
+    "company": "Summit Compliance Systems",
+    "industry": "Compliance software",
+    "us_employees": 340,
+    "contact_name": "Nina Patel",
+    "contact_title": "Head of Revenue Operations",
+    "crm_platform": "Microsoft Dynamics",
+    "notes": "Small but process-heavy team with complex handoffs between SDR, AE, and customer success"
+  }
+]

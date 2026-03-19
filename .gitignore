@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.trigger/
+.vercel/
+.claude/
+.playwright-mcp/
+.env
+web/.env.local
+*.log
+*.png
+*.tsbuildinfo
+.DS_Store

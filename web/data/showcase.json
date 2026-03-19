@@ -1,0 +1,202 @@
+[
+  {
+    "account": {
+      "id": 1,
+      "company": "Northstar Field Services",
+      "industry": "Facilities services",
+      "us_employees": 4800,
+      "contact_name": "Alicia Gomez",
+      "contact_title": "VP, Revenue Operations",
+      "crm_platform": "Salesforce",
+      "notes": "Multi-region field team with branch-level quoting and an expanding enterprise sales motion"
+    },
+    "result": {
+      "account_id": 1,
+      "company": "Northstar Field Services",
+      "icp_fit": "strong_fit",
+      "icp_reasoning": "Northstar is a strong fit because it combines meaningful scale, a multi-region field motion, and a named revenue operations leader. The branch-level sales model suggests handoff friction and inconsistent account context, which makes pipeline visibility and workflow automation highly relevant.",
+      "matched_value_props": [
+        {
+          "value_prop": "pipeline_visibility",
+          "relevance_score": 0.91,
+          "reasoning": "A distributed field team with branch-level quoting usually creates fragmented account visibility and uneven reporting. A VP of Revenue Operations will care about standardizing how opportunity context and execution signals flow into the forecast."
+        },
+        {
+          "value_prop": "workflow_automation",
+          "relevance_score": 0.86,
+          "reasoning": "Enterprise expansion often increases manual research, routing, and follow-up work. Automating those workflows is a credible path to faster execution without adding RevOps headcount."
+        },
+        {
+          "value_prop": "governance_and_handoff",
+          "relevance_score": 0.74,
+          "reasoning": "Northstar's branch structure implies multiple handoffs between field reps, regional managers, and central operations. Governance value is relevant because process drift tends to grow as those motions scale."
+        }
+      ],
+      "email_framework": "pain_led",
+      "email_subject": "Branch-level pipeline visibility at Northstar",
+      "email_body": "Hi Alicia,\n\nTeams that grow through regional field motions usually hit the same problem: account context lives in too many places, so managers spend more time reconciling updates than improving execution.\n\nWith Northstar expanding its enterprise motion, I would expect branch-level quoting and follow-up workflows to make pipeline visibility harder, not easier.\n\nSignalStack helps RevOps teams automate account research, draft follow-up assets, and standardize handoffs so sellers move faster with cleaner data.\n\nOpen to a 15-minute conversation next week?\n\nBest,\n[Your Name]",
+      "discovery_questions": [
+        {
+          "question": "Where does account context break down most often today: before first outreach, during handoff, or after opportunities are already in motion?",
+          "rationale": "This identifies whether Northstar's biggest pain is research, process coordination, or forecast hygiene."
+        },
+        {
+          "question": "How standardized are quoting and follow-up workflows across branches today?",
+          "rationale": "Branch-level inconsistency is often where automation and governance create the clearest ROI."
+        },
+        {
+          "question": "What metrics does leadership trust least right now: stage progression, next-step hygiene, or forecast confidence?",
+          "rationale": "The answer determines whether to deepen the visibility or productivity angle in follow-up."
+        }
+      ],
+      "confidence_score": 0.87,
+      "flags": [
+        "Recent enterprise expansion suggests process complexity is rising faster than the operating model is being standardized"
+      ],
+      "market_intelligence": "The account includes strong operational signals: field structure, scale, and a named RevOps leader. No implementation blockers are visible, but additional research on sales tooling beyond Salesforce would sharpen the workflow automation angle.",
+      "sparse_data_handling": "Core account context is strong. The only notable gap is missing detail on adjacent GTM tools and reporting workflows, so the outreach stays focused on branch-level visibility and process standardization rather than naming specific systems."
+    },
+    "quality": {
+      "checks": {
+        "has_value_prop_match": true,
+        "has_reasoning": true,
+        "email_under_150_words": true,
+        "has_discovery_questions": true,
+        "has_icp_assessment": true,
+        "confidence_above_threshold": true,
+        "email_suppression_justified": true
+      },
+      "quality_score": 1
+    }
+  },
+  {
+    "account": {
+      "id": 2,
+      "company": "BluePeak Software",
+      "industry": "B2B SaaS",
+      "us_employees": 950,
+      "contact_name": "Marcus Lin",
+      "contact_title": "Director of Growth Operations",
+      "crm_platform": "HubSpot",
+      "notes": "PLG plus outbound motion. Recently hired new SDR managers and is building account-based workflows"
+    },
+    "result": {
+      "account_id": 2,
+      "company": "BluePeak Software",
+      "icp_fit": "strong_fit",
+      "icp_reasoning": "BluePeak is a strong fit because it has a named growth operations owner, an active outbound buildout, and the kind of motion complexity that usually creates duplicated research and inconsistent follow-up workflows.",
+      "matched_value_props": [
+        {
+          "value_prop": "workflow_automation",
+          "relevance_score": 0.9,
+          "reasoning": "A PLG plus outbound motion with new SDR managers usually means teams are building process while execution is already underway. Automating repetitive research and follow-up work is likely to be immediately useful."
+        },
+        {
+          "value_prop": "seller_productivity",
+          "relevance_score": 0.82,
+          "reasoning": "New frontline managers need reps to ramp quickly and operate from the same context. Cleaner drafts and next-step guidance can reduce the amount of manual coaching required."
+        },
+        {
+          "value_prop": "governance_and_handoff",
+          "relevance_score": 0.68,
+          "reasoning": "As BluePeak layers account-based workflows onto a PLG motion, governance matters to keep routing and ownership rules from drifting."
+        }
+      ],
+      "email_framework": "pain_led",
+      "email_subject": "Scaling outbound without adding admin load",
+      "email_body": "Hi Marcus,\n\nWhen a PLG team starts building a real outbound engine, the first bottleneck is rarely strategy. It is the manual work around research, routing, and follow-up that slows reps down.\n\nBluePeak's new SDR management layer and move into account-based workflows suggest that operating discipline matters a lot right now.\n\nSignalStack helps GTM teams automate research, produce cleaner outreach drafts, and standardize execution without making managers babysit every step.\n\nWould a short conversation next week be useful?\n\nBest,\n[Your Name]",
+      "discovery_questions": [
+        {
+          "question": "Which outbound steps are still most manual today: account prep, message drafting, or CRM updates?",
+          "rationale": "This surfaces the highest-friction workflow for the growth team."
+        },
+        {
+          "question": "How are SDR managers currently enforcing consistency across a newer outbound team?",
+          "rationale": "The answer reveals whether productivity or governance is the more urgent story."
+        },
+        {
+          "question": "What changed operationally once BluePeak started layering account-based workflows onto PLG?",
+          "rationale": "This frames the account around current transition pain rather than a generic SaaS pitch."
+        }
+      ],
+      "confidence_score": 0.84,
+      "flags": [],
+      "market_intelligence": "Growth and hiring signals are strong, and the HubSpot footprint suggests a reasonably modern GTM stack. Additional context on enrichment tools or sales engagement software would refine the automation angle further.",
+      "sparse_data_handling": "The account has enough context to support a direct email. The outreach avoids naming specific tooling gaps because that would overstate the available evidence."
+    },
+    "quality": {
+      "checks": {
+        "has_value_prop_match": true,
+        "has_reasoning": true,
+        "email_under_150_words": true,
+        "has_discovery_questions": true,
+        "has_icp_assessment": true,
+        "confidence_above_threshold": true,
+        "email_suppression_justified": true
+      },
+      "quality_score": 1
+    }
+  },
+  {
+    "account": {
+      "id": 3,
+      "company": "Harbor Industrial Group",
+      "industry": "Industrial distribution",
+      "us_employees": 7200,
+      "contact_name": null,
+      "contact_title": null,
+      "crm_platform": "Unknown",
+      "notes": "Acquisition-driven growth across multiple regions with uneven CRM usage and no named GTM operator identified"
+    },
+    "result": {
+      "account_id": 3,
+      "company": "Harbor Industrial Group",
+      "icp_fit": "moderate_fit",
+      "icp_reasoning": "Harbor is an operationally interesting account because acquisition-driven growth and uneven CRM usage often create severe handoff and data-quality problems. The fit is only moderate today because there is no confirmed GTM owner and no tooling clarity.",
+      "matched_value_props": [
+        {
+          "value_prop": "governance_and_handoff",
+          "relevance_score": 0.89,
+          "reasoning": "Acquisition-heavy organizations typically inherit process drift, duplicate account ownership, and inconsistent qualification standards. Governance and handoff discipline is the clearest initial angle."
+        },
+        {
+          "value_prop": "pipeline_visibility",
+          "relevance_score": 0.77,
+          "reasoning": "When regions are using CRM unevenly, leadership rarely has a trustworthy picture of next steps or true pipeline health."
+        }
+      ],
+      "email_framework": "insight_led",
+      "email_subject": "",
+      "email_body": "",
+      "discovery_questions": [
+        {
+          "question": "Who currently owns commercial systems and process design across Harbor's regional teams?",
+          "rationale": "A named operator is needed before meaningful outreach can happen."
+        },
+        {
+          "question": "How standardized is CRM usage across acquired business units today?",
+          "rationale": "This tests whether governance and visibility pain are centralized or local."
+        }
+      ],
+      "confidence_score": 0.58,
+      "flags": [
+        "No relevant GTM operator identified. Outreach should wait until a credible contact is found.",
+        "Primary CRM platform is unknown, which limits implementation-fit confidence."
+      ],
+      "market_intelligence": "The account has strong structural signals but thin operator-level data. Acquisition complexity makes the problem compelling, yet the missing contact and missing CRM platform mean the current output should be treated as research guidance rather than send-ready outreach.",
+      "sparse_data_handling": "Email was intentionally suppressed because there is no named buyer and not enough tooling context to support confident outreach. Discovery is focused on identifying the system owner first."
+    },
+    "quality": {
+      "checks": {
+        "has_value_prop_match": true,
+        "has_reasoning": true,
+        "email_under_150_words": true,
+        "has_discovery_questions": true,
+        "has_icp_assessment": true,
+        "confidence_above_threshold": false,
+        "email_suppression_justified": true
+      },
+      "quality_score": 0.8571428571428571
+    }
+  }
+]
