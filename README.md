@@ -75,12 +75,21 @@ cp .env.example .env
 cp web/.env.example web/.env.local
 ```
 
-Required variables:
+Required variables for both the worker and the playground:
 
 ```bash
 ANTHROPIC_API_KEY=
+SEARCH_PROVIDER=tavily
 TAVILY_API_KEY=
+EXA_API_KEY=
 ```
+
+Search configuration:
+
+- `SEARCH_PROVIDER=tavily` uses Tavily for enrichment search
+- `SEARCH_PROVIDER=exa` uses Exa for enrichment search
+- If `SEARCH_PROVIDER` is unset, the app prefers Tavily when `TAVILY_API_KEY` is present and otherwise falls back to Exa when `EXA_API_KEY` is present
+- Only the API key for the selected provider is required
 
 Optional safety variable:
 
@@ -92,22 +101,40 @@ If `DEMO_ACCESS_TOKEN` is unset, the playground API only works from localhost. I
 
 If you want to use the local playground against Trigger.dev, also set the Trigger.dev environment variables documented in their dashboard.
 
-## Local development
+## Run The Local Playground
 
-### Trigger.dev tasks
+The local playground uses two processes:
+
+1. The Trigger.dev worker in the repo root
+2. The Next.js frontend in `web/`
+
+Start the worker first from the repo root:
 
 ```bash
 npm run dev
 ```
 
-### Playground
+In a second terminal, start the frontend:
 
 ```bash
 cd web
 npm run dev
 ```
 
-The playground is local-only by default. This repo does not assume a hosted public demo.
+Then open `http://localhost:3000`.
+
+How the flow works:
+
+1. The frontend calls `/api/prospect`
+2. `/api/prospect` enriches the company with Tavily or Exa, then structures it with Claude
+3. The enriched account is sent to the `prospect-account` Trigger.dev task
+4. The frontend polls `/api/status` until the task returns the final prospecting output
+
+Important notes:
+
+- The playground is local-only by default. This repo does not assume a hosted public demo.
+- If the Trigger.dev worker is not running, the company enrichment step can still start, but the prospecting run will not complete.
+- The repo does not persist results to a database by default. The enriched account and final output are returned to the browser and stored in the Trigger.dev run output/logs.
 
 ## Example input
 

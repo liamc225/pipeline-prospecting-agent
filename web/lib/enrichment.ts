@@ -1,6 +1,14 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { Account } from "./types";
 
+type SearchProvider = "tavily" | "exa";
+
+interface SearchResult {
+  title: string;
+  url: string;
+  content: string;
+}
+
 // ── Tavily search ───────────────────────────────────────────
 
 interface TavilyResult {
@@ -13,12 +21,17 @@ interface TavilyResponse {
   results: TavilyResult[];
 }
 
-async function tavilySearch(query: string): Promise<TavilyResult[]> {
+async function tavilySearch(query: string): Promise<SearchResult[]> {
+  const apiKey = process.env.TAVILY_API_KEY;
+  if (!apiKey) {
+    throw new Error("TAVILY_API_KEY is required when SEARCH_PROVIDER=tavily");
+  }
+
   const res = await fetch("https://api.tavily.com/search", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      api_key: process.env.TAVILY_API_KEY,
+      api_key: apiKey,
       query,
       max_results: 5,
       search_depth: "basic",
@@ -33,12 +46,108 @@ async function tavilySearch(query: string): Promise<TavilyResult[]> {
   return data.results;
 }
 
-async function searchCompany(company: string): Promise<TavilyResult[]> {
+// ── Exa search ──────────────────────────────────────────────
+
+interface ExaResult {
+  title?: string;
+  url: string;
+  text?: string;
+  highlights?: string[];
+  summary?: string;
+}
+
+interface ExaResponse {
+  results: ExaResult[];
+}
+
+export function resolveSearchProvider(
+  searchProvider = process.env.SEARCH_PROVIDER,
+  hasExaKey = Boolean(process.env.EXA_API_KEY),
+  hasTavilyKey = Boolean(process.env.TAVILY_API_KEY)
+): SearchProvider {
+  const normalized = searchProvider?.trim().toLowerCase();
+
+  if (normalized === "exa") {
+    if (!hasExaKey) {
+      throw new Error("EXA_API_KEY is required when SEARCH_PROVIDER=exa");
+    }
+    return "exa";
+  }
+
+  if (normalized === "tavily") {
+    if (!hasTavilyKey) {
+      throw new Error("TAVILY_API_KEY is required when SEARCH_PROVIDER=tavily");
+    }
+    return "tavily";
+  }
+
+  if (normalized) {
+    throw new Error(`Unsupported SEARCH_PROVIDER: ${searchProvider}`);
+  }
+
+  if (hasTavilyKey) return "tavily";
+  if (hasExaKey) return "exa";
+
+  throw new Error(
+    "Set TAVILY_API_KEY or EXA_API_KEY to enable account enrichment search"
+  );
+}
+
+function mapExaResult(result: ExaResult): SearchResult {
+  const content =
+    result.highlights?.join("\n") || result.summary || result.text || "";
+
+  return {
+    title: result.title || result.url,
+    url: result.url,
+    content,
+  };
+}
+
+async function exaSearch(query: string): Promise<SearchResult[]> {
+  const apiKey = process.env.EXA_API_KEY;
+  if (!apiKey) {
+    throw new Error("EXA_API_KEY is required when SEARCH_PROVIDER=exa");
+  }
+
+  const res = await fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+    },
+    body: JSON.stringify({
+      query,
+      type: "auto",
+      numResults: 5,
+      userLocation: "US",
+      contents: {
+        text: true,
+        highlights: {
+          maxCharacters: 1200,
+        },
+        summary: true,
+      },
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Exa search failed: ${res.status} ${res.statusText}`);
+  }
+
+  const data: ExaResponse = await res.json();
+  return data.results.map(mapExaResult);
+}
+
+async function searchCompany(company: string): Promise<SearchResult[]> {
+  const provider = resolveSearchProvider();
+  const search = provider === "exa" ? exaSearch : tavilySearch;
+
   const [companyResults, contactResults] = await Promise.all([
-    tavilySearch(
+    search(
       `"${company}" revenue operations sales operations CRM technology growth team`
     ),
-    tavilySearch(
+    search(
       `"${company}" revenue operations sales operations chief revenue officer VP sales operations growth operations leader`
     ),
   ]);
